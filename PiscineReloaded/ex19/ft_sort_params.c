@@ -6,36 +6,42 @@
 /*   By: eschmitz <eschmitz@students.s19.be>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 13:25:53 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/03 13:52:50 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:09:21 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		write(1, &str[i], 1);
-}
+void	ft_putchar(char c);
 
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while (s1[i] == s2[i] && s1[i])
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
+	}
 	return (s1[i] - s2[i]);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		ft_putchar(str[i]);
 }
 
 int	main(int ac, char **av)
 {
-	int	i;
-	int	c;
-	char *temp;
+	int		i;
+	int		c;
+	char	*temp;
 
 	c = -1;
 	while (++c <= ac)
@@ -54,7 +60,7 @@ int	main(int ac, char **av)
 	i = 0;
 	while (++i < ac)
 	{
-		ft_putchar(av[i]);
+		ft_putstr(av[i]);
 		ft_putchar("\n");
 	}
 	return (0);

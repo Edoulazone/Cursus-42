@@ -6,29 +6,25 @@
 /*   By: eschmitz <eschmitz@students.s19.be>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 13:18:41 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/03 13:25:29 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:57:56 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
 #include <unistd.h>
 
-void	ft_putchar(char *str)
-{
-	int	i;
+void	ft_putchar(char c);
 
-	i = -1;
-	while (str[++i])
-		write(1, &str[i], 1);
-}
-*/
-int	main(int av, char **ac)
+int	main(int ac, char **av)
 {
 	int	i;
+	int	j;
 
 	i = 1;
-	while (i < av)
+	while (i < ac)
 	{
-		ft_putchar(ac[i]);
+		j = 0;
+		while (av[i][++j])
+			ft_putchar(ac[i][j]);
 		ft_putchar("\n");
 		i++;
 	}

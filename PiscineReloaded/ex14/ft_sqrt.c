@@ -6,14 +6,14 @@
 /*   By: eschmitz <eschmitz@students.s19.be>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 10:33:18 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/03 10:40:04 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:50:58 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_sqrt(int nb)
 {
 	int	n;
-	
+
 	n = 1;
 	while (n * n <= nb && n <= 46340)
 	{

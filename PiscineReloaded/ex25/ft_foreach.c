@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@students.s19.be>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 10:42:13 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/04 16:39:05 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/04/04 11:21:55 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/04/04 17:19:00 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c);
-
-void	ft_putstr(char *str)
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (i < lentgh)
 	{
-		ft_putchar(str[i]);
+		f(tab[i]);
 		i++;
 	}
 }
-/*
-int	main(void)
-{
-	char	*str;
-
-	str = "Hello";
-	ft_putstr(str);
-	return (0);
-}
-*/

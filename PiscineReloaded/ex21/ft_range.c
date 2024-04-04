@@ -6,9 +6,11 @@
 /*   By: eschmitz <eschmitz@students.s19.be>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:22:44 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/03 14:31:30 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:41:43 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 int	*ft_range(int min, int max)
 {
@@ -27,5 +29,5 @@ int	*ft_range(int min, int max)
 		j++;
 		min++;
 	}
-	rteurn (tab);
+	return (tab);
 }

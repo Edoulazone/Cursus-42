@@ -6,14 +6,17 @@
 /*   By: eschmitz <eschmitz@students.s19.be>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:46:33 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/02 18:47:56 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:28:04 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
+
+void	ft_putchar(char c);
 
 void	ft_is_negative(int n)
 {
 	if (n < 0)
-		write(1, "N", 1);
+		ft_putchar("N");
 	else
-		write(1, "P", 1);
+		ft_putchar("P");
 }

@@ -6,12 +6,12 @@
 /*   By: eschmitz <eschmitz@students.s19.be>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 18:55:12 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/02 18:57:04 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:48:06 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_div_mod(int a, int b, int *div, int *mod)
 {
-	*div = a/b;
-	*mod = a%b;
+	*div = a / b;
+	*mod = a % b;
 }
