@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 12:43:55 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/17 13:41:29 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/04/15 14:40:54 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/04/17 14:47:49 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	i;
+#include <libft.h>
 
-	if (!b)
-		return (NULL);
-	i = 0;
-	while (i < len)
+char	*ft_strchr(const char *base_string, int character)
+{
+	char	*modifiable_string;
+
+	modifiable_string = (char *)base_string;
+	while (*modifiable_string != character)
 	{
-		*(unsigned char *)(b + i) = (unsigned char) c;
-		i++;
+		if (*modifiable_string == '\0')
+			return (NULL);
+		modifiable_string++;
 	}
-	return (b);
+	return (modifiable_string);
 }
