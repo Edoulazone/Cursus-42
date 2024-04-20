@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 14:41:09 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/17 19:17:37 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/04/15 14:40:54 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/04/19 16:21:10 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	size_t	j;
+	char	*modifiable_string;
 
-	if (*needle == '\0')
-		return ((char*)haystack);
-	i = -1;
-	while (haystack[++i] && i < n)
+	modifiable_string = (char *)s;
+	while (*modifiable_string != (char)c)
 	{
-		j = 0;
-		while ((haystack[i +j]) == needle[j] && (i + j) < n)
-		{
-			j++;
-			if (needle[j] == '\0')
-				return ((char*)haystack + i);
-		}
+		if (*modifiable_string == '\0')
+			return (NULL);
+		modifiable_string++;
 	}
-	return (NULL);
+	return (modifiable_string);
 }

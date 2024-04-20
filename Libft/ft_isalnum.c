@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 12:51:57 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/17 13:45:03 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/04/08 12:15:44 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/04/19 13:26:05 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
+#include "libft.h"
 
-	i = -1;
-	while (++i < n)
-		((char*)s)[i] = 0;
+int	ft_isalnum(int c)
+{
+	if ((c <= 'z' && c >= 'a') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	if (c <= '9' && c >= '0')
+		return (1);
+	return (0);
 }

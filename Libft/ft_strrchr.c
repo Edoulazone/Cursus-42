@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 14:40:54 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/17 14:47:49 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/04/15 14:41:12 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/04/19 16:10:54 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *base_string, int character)
+char	*ft_strrchr(const char *base_string, int character)
 {
-	char	*modifiable_string;
+	int	indent;
 
-	modifiable_string = (char *)base_string;
-	while (*modifiable_string != character)
+	indent = ft_strlen(base_string) + 1;
+	while (--indent >= 0)
 	{
-		if (*modifiable_string == '\0')
-			return (NULL);
-		modifiable_string++;
+		if (base_string[indent] == (char)character)
+			return ((char *)base_string + indent);
 	}
-	return (modifiable_string);
+	return (NULL);
 }

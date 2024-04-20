@@ -6,36 +6,46 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:40:37 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/17 19:22:31 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/04/20 12:36:19 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
+
+static void	atoi_skip(const char **str, int *pos)
+{
+	while ((**str >= 9 && **str <= 13) || **str == 32)
+		(*str)++;
+	if (**str == '-' || **str == '+')
+	{
+		if (**str == '-')
+			*pos += 1;
+		(*str)++;
+	}
+}
 
 int	ft_atoi(const char *str)
 {
-	int     i;
-    int     pos;
-    int     number;
+	int		pos;
+	long	number;
+	long	overflow;
 
-    i = 0;
-    pos = 0;
-    number = 0;
-    while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-        i++;
-    while (str[i] == '+' || str[i] == '-')
-    {
-        if (str[i] == '-')
-            pos++;
-        i++;
-    }
-    while (str[i] <= '9' && str[i] >= '0')
-    {
-        number = number * 10;
-        number = number + (str[i] - 48);
-        i++;
-    }
-    if (pos % 2 == 1)
-        return (-number);
-    return (number);
+	number = 0;
+	pos = 0;
+	overflow = 0;
+	atoi_skip(&str, &pos);
+	while (ft_isdigit(*str))
+	{
+		number *= 10;
+		number += (*str - 48);
+		str++;
+		if (overflow > number && pos % 2 == 0)
+			return (-1);
+		else if (overflow > number && pos % 2 == 1)
+			return (0);
+		overflow = number;
+	}
+	if (pos % 2 == 1)
+		return (-number);
+	return (number);
 }

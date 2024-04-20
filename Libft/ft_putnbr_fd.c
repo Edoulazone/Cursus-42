@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 14:41:12 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/17 14:51:36 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/04/18 18:47:46 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/04/19 16:07:19 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-char	*ft_strrchr(const char *base_string, int character)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	indent;
-
-	i = ft_strlen(base_string) + 1;
-	while (--i >= 0)
+	if (n == -2147483648)
 	{
-		if (base_string[i] == (char)character)
-			return ((char*)base_string + i);
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	return (NULL);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n < 10)
+		ft_putchar_fd((n + '0'), fd);
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10 + '0'), fd);
+	}
 }
