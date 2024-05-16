@@ -21,9 +21,11 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
+	make $@ -C Libft
 
 fclean: clean
 	rm -f $(NAME)
+	make $@ -C Libft
 
 re: fclean all
 

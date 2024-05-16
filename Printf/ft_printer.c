@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:41:49 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/29 12:38:44 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:10:51 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	ft_putstr(char *str)
@@ -23,7 +22,7 @@ int	ft_putstr(char *str)
 	int	i;
 
 	if (!str)
-		return(ft_putstr("(null)"));
+		return (ft_putstr("(null)"));
 	i = -1;
 	while (str[++i])
 		ft_putchar(str[i]);

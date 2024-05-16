@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:10 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/04/29 12:35:24 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:54:37 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,28 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (str[++i])
 	{
-		if (str[i] == '%')
+		if (str[i] == '%' && str[i + 1])
 			length += check_format(str[++i], args);
-		else
+		else if (str [i] != '%' || str[i + 1])
 			length += ft_putchar(str[i]);
 	}
 	va_end (args);
 	return (length);
 }
+// #include <stdio.h>
+
+// int main(int argc, char const *argv[])
+// {
+// 	(void)argc;
+// 	(void)argv;
+// 	// int result1 = ft_printf(argv[1], argv[2]);
+// 	// printf("\n%d\n", result1);
+// 	// printf("\n\n-----------------------------\n\n");
+// 	// int result2 = printf(argv[1], argv[2]);
+// 	// printf("\n%d\n", result2);
+// 	// ft_printf("%X\n", 42);
+// 	ft_printf("%d\n", ft_printf("hey"));
+// 	printf("%d\n", printf("%s\\%%1456", "hey"));
+
+// 	return 0;
+// }
