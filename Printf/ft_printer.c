@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:41:49 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/05/15 18:10:51 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:20:51 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,56 @@ int	ft_putstr(char *str)
 	return (i);
 }
 
-int	ft_putnbr(int n)
+size_t	ft_strlen(const char *s)
 {
-	int		len;
-	char	*num;
+	int	i;
 
-	len = 0;
-	num = ft_itoa(n);
-	len = ft_putstr(num);
-	free(num);
-	return (len);
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
-int	ft_putptr(void *ptr)
+int	get_size(int n)
 {
-	unsigned long	ptr_check;
-	int				res;
+	int	size;
 
-	ptr_check = (unsigned long)ptr;
-	res = 0;
-	if (ptr_check >= 16)
-		res += ft_putptr((void *)(ptr_check / 16));
-	res += ft_putchar("0123456789abcdef"[ptr_check % 16]);
-	return (res);
+	if (n == 0)
+		return (1);
+	size = 0;
+	while (n != 0)
+	{
+		n /= 10;
+		size++;
+	}
+	return (size);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*number;
+	int		size;
+	long	copy_number;
+
+	size = get_size(n);
+	copy_number = n;
+	if (n < 0)
+	{
+		size++;
+		copy_number *= -1;
+	}
+	number = (char *)malloc(size + 1);
+	if (!number)
+		return (NULL);
+	number[size] = '\0';
+	while ((--size) >= 0 && copy_number >= 0)
+	{
+		number[size] = ((copy_number % 10) + '0');
+		copy_number /= 10;
+	}
+	if (number[0] == '0' && n != 0)
+		number[0] = '-';
+	return (number);
 }

@@ -6,11 +6,36 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:10 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/05/15 18:54:37 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:15:08 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_putptr(void *ptr)
+{
+	unsigned long	ptr_check;
+	int				res;
+
+	ptr_check = (unsigned long)ptr;
+	res = 0;
+	if (ptr_check >= 16)
+		res += ft_putptr((void *)(ptr_check / 16));
+	res += ft_putchar("0123456789abcdef"[ptr_check % 16]);
+	return (res);
+}
+
+int	ft_putnbr(int n)
+{
+	int		len;
+	char	*num;
+
+	len = 0;
+	num = ft_itoa(n);
+	len = ft_putstr(num);
+	free(num);
+	return (len);
+}
 
 char	*ft_convert(unsigned int num, char *set)
 {
@@ -66,6 +91,8 @@ int	ft_printf(const char *str, ...)
 
 	i = -1;
 	length = 0;
+	if (!str)
+		return (0);
 	va_start(args, str);
 	while (str[++i])
 	{
@@ -77,20 +104,3 @@ int	ft_printf(const char *str, ...)
 	va_end (args);
 	return (length);
 }
-// #include <stdio.h>
-
-// int main(int argc, char const *argv[])
-// {
-// 	(void)argc;
-// 	(void)argv;
-// 	// int result1 = ft_printf(argv[1], argv[2]);
-// 	// printf("\n%d\n", result1);
-// 	// printf("\n\n-----------------------------\n\n");
-// 	// int result2 = printf(argv[1], argv[2]);
-// 	// printf("\n%d\n", result2);
-// 	// ft_printf("%X\n", 42);
-// 	ft_printf("%d\n", ft_printf("hey"));
-// 	printf("%d\n", printf("%s\\%%1456", "hey"));
-
-// 	return 0;
-// }
