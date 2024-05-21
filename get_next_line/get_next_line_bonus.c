@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:22:41 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/05/21 16:48:56 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/05/21 17:54:03 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_free_return(char **str, int must_free)
 {
@@ -23,21 +23,21 @@ static char	*ft_free_return(char **str, int must_free)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*save;
+	static char	*save[OPEN_MAX];
 	char		*buffer;
 
 	if (BUFFER_SIZE >= INT_MAX)
 		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (ft_free_return(&save, 1));
+		return (ft_free_return(&save[fd], 1));
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-		return (ft_free_return(&save, 1));
-	line = read_line(fd, save, buffer);
+		return (ft_free_return(&save[fd], 1));
+	line = read_line(fd, save[fd], buffer);
 	free(buffer);
 	if (!line)
-		return (ft_free_return(&save, 0));
-	save = ft_save(&line);
+		return (ft_free_return(&save[fd], 0));
+	save[fd] = ft_save(&line);
 	return (line);
 }
 
