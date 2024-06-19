@@ -18,7 +18,8 @@
 char    *ft_join(char *line, char *buffer, int size, int from, int to)
 {
     int     i;
-    char    *res;    i = 0;
+    char    *res;    
+    i = 0;
     if(!line)
         return (NULL);
     res = malloc(sizeof(char) * (size + to + 1));
@@ -50,7 +51,9 @@ char *get_next_line(int fd)
     char    *line;
     static  int cursor = 0;
     static  int bytes_read = -1;
-    static  char buffer[BUFFER_SIZE];    if (fd < 0 || BUFFER_SIZE < 1)
+    static  char buffer[BUFFER_SIZE];
+    
+    if (fd < 0 || BUFFER_SIZE < 1)
         return (NULL);
     if (cursor >= bytes_read)
     {
