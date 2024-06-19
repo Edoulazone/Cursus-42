@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
+
 char    *ft_join(char *line, char *buffer, int size, int from, int to)
 {
     int     i;
