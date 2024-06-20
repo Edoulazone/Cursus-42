@@ -19,6 +19,7 @@ char    *ft_join(char *line, char *buffer, int size, int from, int to)
 {
     int     i;
     char    *res;    
+    
     i = 0;
     if(!line)
         return (NULL);
