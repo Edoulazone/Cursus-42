@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:45:13 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/10 16:58:32 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/10 18:55:19 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # define WIN_WIDTH 2560
 # define WIN_HEIGHT 1400
 
-enum {
+enum
+{
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
 	ON_MOUSEDOWN = 4,
@@ -32,7 +33,8 @@ enum {
 	ON_DESTROY = 17
 };
 
-enum { //mouse buttons
+enum
+{
 	MOUSE_LEFT = 1,
 	MOUSE_RIGHT = 2,
 	MOUSE_WHEEL_DOWN = 4,
@@ -41,7 +43,8 @@ enum { //mouse buttons
 	MOUSE_WHEEL_LEFT = 7
 };
 
-enum {
+enum
+{
 	KEY_A = 0,
 	KEY_B = 11,
 	KEY_C = 8,
@@ -95,20 +98,20 @@ typedef struct s_point
 	float	y;
 	float	z;
 	float	color;
-	float	x_proj;
-	float	y_proj;
+	float	projected_x;
+	float	projected_y;
 	int		height;
 	int		width;
 }			t_point;
 
-typedef struct s_img
+typedef struct s_image
 {
-	void	*img_ptr;
-	char	*img_pixels_ptr;
+	void	*image_ptr;
+	char	*image_pixels_ptr;
 	int		bits_per_pixel;
 	int		endian;
 	int		size_line;
-}			t_img;
+}			t_image;
 
 typedef struct s_mlx_data
 {
@@ -121,13 +124,13 @@ typedef struct s_mlx_data
 	int		dy;
 	int		sx;
 	int		sy;
-	int		err;
-	int		err2;
+	int		error;
+	int		error2;
 	float	translated_x;
 	float	translated_y;
 	float	rotated_x;
 	float	rotated_y;
-	t_img	*img;
+	t_img	*image;
 	t_point	*point;
 }			t_mlx_data;
 

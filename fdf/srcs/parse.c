@@ -6,24 +6,79 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:57:33 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/10 17:04:50 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/10 18:53:54 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point *get_points(char **argv)
+t_point	*get_points(char *file_name)
 {
-    int     i;
-    int     size;
-    t_point *points;
-    int     columns;
+	int		i;
+	int		size;
+	t_point	*points;
+	int		columns;
 
-    i = 0;
-    size = count_columns(argv[1]) * count_line(argv[1]);
-    if (size == -1)
-    {
-        write(2, "Error: nothing to read\n", 23);
-        exit(1);
-    }
+	i = 0;
+	size = count_columns(file_name) * count_line(file_name);
+	if (size == -1)
+	{
+		write(2, "Error: nothing to read\n", 23);
+		exit(1);
+	}
+	points = malloc(sizeof(t_point) * (count + 1));
+	if (!points)
+		exit(1);
+	points[size].x = -1;
+	points[size].y = -1;
+	return (points);
+}
+
+void	loop(t_point *points, char *line, char **argv)
+{
+	static int	k = 0;
+	char		**array;
+	char		*temp;
+	int			i;
+	int			count;
+
+	array = ft_split(line, ' ');
+	if (!array)
+		exit_malloc();
+	count = count_number(array);
+	i = -1;
+	while (array[++i])
+	{
+		if (ft_strncmp(array[i], "\n", 1) == 0)
+			break ;
+		points[k].x = i;
+		points[k].y = k / count;
+		points[k].z = ft_atoi(array[i]);
+		if (ft_strchr(array[i], ',') == NULL)
+			points[k].color = ft_atoi_hexa("CD28B5");
+		else
+			points[k].colors = ft_atoi_hexa(ft_strchr(array[i], 'x') + 1);
+		k++;
+	}
+	free_tab(array);
+}
+
+t_point	*parsing(char **argv)
+{
+	t_point	*points;
+	char	*line;
+	int		fd;
+
+	points = get_points(argv[1]);
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		exit_error();
+	line = get_next_line(fd);
+	while (line)
+	{
+		loop(points, line, argv);
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (points);
 }

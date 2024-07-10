@@ -22,7 +22,11 @@ MLX_OBJ = -I/usr/include -Imlx_linux -O3
 INCLUDE = -I includes -I mlx
 
 SRCS_DIR = srcs
-SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/utils.c
+SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/parse.c\
+			$(SRCS_DIR)/window.c $(SRCS_DIR)/hooks.c\
+			$(SRCS_DIR)/error_management.c\
+			$(SRCS_DIR)/get_next_line.c\
+			$(SRCS_DIR)/get_next_line_utils.c\
 
 OBJS = $(SRCS:$(SRCS_DIR).c=$(SRCS_DIR).o)
 
