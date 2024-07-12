@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:45:13 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/10 18:55:19 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/12 10:26:59 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_point
 	float	x;
 	float	y;
 	float	z;
-	float	color;
+	float	colour;
 	float	projected_x;
 	float	projected_y;
 	int		height;
@@ -133,5 +133,28 @@ typedef struct s_mlx_data
 	t_img	*image;
 	t_point	*point;
 }			t_mlx_data;
+
+int	main(int ac, char **av);
+
+void    draw(t_mlx_data *data, t_point *points);
+
+void	free_points_tab(t_point **array);
+void	free_tab_error(t_point **array, int i);
+void	free_tab(char **array);
+
+int	count_columns(char *file_name);
+int	count_lines(char *file_name);
+int	count_number(char **array);
+
+void	exit_error(void);
+void	exit_malloc(void);
+void	window_error(void);
+
+t_point	*parsing(char **argv);
+
+void	projection(t_point *points, t_mlx_data *data, char **argv);
+
+t_mlx_data	*make_window(void);
+int	closed_window(t_mlx_data *data);
 
 #endif

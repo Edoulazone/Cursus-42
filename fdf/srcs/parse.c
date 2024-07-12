@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:57:33 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/10 18:53:54 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/12 10:26:07 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_point	*get_points(char *file_name)
 	return (points);
 }
 
-void	loop(t_point *points, char *line, char **argv)
+void	loop_parse(t_point *points, char *line, char **argv)
 {
 	static int	k = 0;
 	char		**array;
@@ -55,9 +55,9 @@ void	loop(t_point *points, char *line, char **argv)
 		points[k].y = k / count;
 		points[k].z = ft_atoi(array[i]);
 		if (ft_strchr(array[i], ',') == NULL)
-			points[k].color = ft_atoi_hexa("CD28B5");
+			points[k].colour = ft_atoi_hexa("CD28B5");
 		else
-			points[k].colors = ft_atoi_hexa(ft_strchr(array[i], 'x') + 1);
+			points[k].colour = ft_atoi_hexa(ft_strchr(array[i], 'x') + 1);
 		k++;
 	}
 	free_tab(array);
@@ -76,7 +76,7 @@ t_point	*parsing(char **argv)
 	line = get_next_line(fd);
 	while (line)
 	{
-		loop(points, line, argv);
+		loop_parse(points, line, argv);
 		free(line);
 		line = get_next_line(fd);
 	}

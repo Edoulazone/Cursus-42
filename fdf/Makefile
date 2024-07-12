@@ -23,10 +23,12 @@ INCLUDE = -I includes -I mlx
 
 SRCS_DIR = srcs
 SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/parse.c\
-			$(SRCS_DIR)/window.c $(SRCS_DIR)/hooks.c\
+			$(SRCS_DIR)/window.c $(SRCS_DIR)/draw.c\
 			$(SRCS_DIR)/error_management.c\
 			$(SRCS_DIR)/get_next_line.c\
 			$(SRCS_DIR)/get_next_line_utils.c\
+			$(SRCS_DIR)/projection.c\
+			$(SRCS_DIR)/free.c $(SRCS_DIR)/count.c
 
 OBJS = $(SRCS:$(SRCS_DIR).c=$(SRCS_DIR).o)
 
