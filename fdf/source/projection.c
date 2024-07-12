@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 18:33:14 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/12 19:56:22 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/07/10 18:32:18 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/07/10 18:44:14 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
+#include "fdf.h"
 
-int		ft_atoi(const char *str);
-int		atoi_hexa(char *str);
-int		ft_isdigit(int c);
-void	ft_putendl(const char *s);
-char	**ft_split(char const *s, char c);
-size_t	ft_strlen(const char *str);
-char	*ft_strrchr(const char *str, int c);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	projection(t_point *points, t_mlx_data *data, char **argv)
+{
+	int		i;
 
-#endif
+	i = -1;
+	while (points[++i].x != -1)
+	{
+		points[i].projected_x = (points[i].x - points[i].y) * (sqrt(3) / 2);
+		points[i].projected_y = ((points[i].x + points[i].y) / 2) - points[i].z;
+		points[i].projected_x += data->width / 2;
+		points[i].projected_y += data->height / 2;
+	}
+}

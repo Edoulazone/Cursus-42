@@ -14,23 +14,17 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
 
-MLX_DIR = mlx
+MLX_DIR = ./mlx
 MLX_PATH = ${MLX_DIR}/libmlx.a
-MLX = -lmlx -Lmlx -framework OpenGl -framework AppKit $(MLX_PATH)
+MLX = MLX =  -L /usr/lib -lXext -lX11 -lm -lz
 MLX_OBJ = -I/usr/include -Imlx_linux -O3
+MLX_LIB = -L $(MLX_DIR) -lmlx
 
-INCLUDE = -I includes -I mlx
+SRCS = source/main.c source/window.c source/error_management.c \
+	   source/parse.c source/get_next_line.c source/get_next_line_utils.c \
+	   source/free.c source/count.c source/draw.c source/projection.c
 
-SRCS_DIR = srcs
-SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/parse.c\
-			$(SRCS_DIR)/window.c $(SRCS_DIR)/draw.c\
-			$(SRCS_DIR)/error_management.c\
-			$(SRCS_DIR)/get_next_line.c\
-			$(SRCS_DIR)/get_next_line_utils.c\
-			$(SRCS_DIR)/projection.c\
-			$(SRCS_DIR)/free.c $(SRCS_DIR)/count.c
-
-OBJS = $(SRCS:$(SRCS_DIR).c=$(SRCS_DIR).o)
+OBJS = $(SRCS:srcs.c=srcs.o)
 
 all: $(NAME)
 
@@ -46,20 +40,19 @@ $(NAME): $(OBJ)
 	@echo "\033[0;34m	██║      ██████╔╝  ██║     		"
 	@echo "\033[0;34m	╚═╝      ╚═════╝   ╚═╝  		"
 	@echo "                 							"
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(MLX) $(INCLUDE) $(LIBFT)
+	@$(CC) $(OBJS) $(LIBFT) $(CFLAGS) -g $(MLX_LIB) $(MLX) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	@make clean -C libft
-	@$(RM) $(OBJS)
-	@make clean -C mlx
-
-fclean: clean
+fclean : clean
 	@make fclean -C libft
-	@$(RM) $(NAME)
+	@$(RM) fdf
 
-re: fclean all
+clean :
+	@make clean -C libft
+	@$(RM) source/*.o
+
+re : fclean all 
 
 .PHONY: all clean fclean re

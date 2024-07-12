@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 18:33:14 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/12 19:56:22 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/07/10 18:09:45 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/07/10 18:49:02 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
+#include "fdf.h"
 
-int		ft_atoi(const char *str);
-int		atoi_hexa(char *str);
-int		ft_isdigit(int c);
-void	ft_putendl(const char *s);
-char	**ft_split(char const *s, char c);
-size_t	ft_strlen(const char *str);
-char	*ft_strrchr(const char *str, int c);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	free_tab(char **array)
+{
+	int	i;
 
-#endif
+	i = -1;
+	while (array[++i] != NULL)
+		free(array[i]);
+	free(array);
+}
+
+void	free_tab_error(t_point **array, int i)
+{
+	while (i >= 0)
+		free(array[i--]);
+	free(array);
+	exit(1);
+}
+
+void	free_points_tab(t_point **array)
+{
+	int	i;
+
+	i = -1;
+	while (array[++i] != NULL)
+		free(array[i]);
+	free(array);
+}
