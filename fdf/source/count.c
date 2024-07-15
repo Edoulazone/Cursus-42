@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:32:10 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 15:02:02 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:23:41 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	count_lines(char *file_name)
 	line = get_next_line(fd);
 	while (line)
 	{
-		count++;
 		if (line)
 			free(line);
+		count++;
 		line = get_next_line(fd);
 	}
 	close(fd);

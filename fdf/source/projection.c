@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:32:18 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 16:08:54 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:20:25 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	projection(t_point *points, t_mlx_data *data)
 		points[i].projected_x = (points[i].x - points[i].y) * (sqrt(3) / 2);
 		points[i].projected_y = ((points[i].x + points[i].y) / 2) - points[i].z;
 		points[i].projected_x += WIDTH / 2;
-		points[i].projected_y += 400;
+		points[i].projected_y += HEIGHT / 2;
 	}
 }

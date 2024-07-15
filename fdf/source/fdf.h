@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:45:13 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 16:19:51 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:46:50 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ int			count_number(char **array);
 void		exit_error(void);
 void		exit_malloc(void);
 void		window_error(void);
+int			bad_file(t_mlx_data *data);
 
 t_point		*parsing(char **argv);
 
@@ -161,6 +162,11 @@ void		projection(t_point *points, t_mlx_data *data);
 t_mlx_data	*make_window(void);
 int			closed_window(t_mlx_data *data);
 
-int			escape_handle(int key, t_mlx_data *data);
+int			key_handle(int key, t_mlx_data *data);
+void		translate_down(t_point *points, t_mlx_data *data);
+void		translate_up(t_point *points, t_mlx_data *data);
+void		translate_left(t_point *points, t_mlx_data *data);
+void		translate_right(t_point *points, t_mlx_data *data);
+void		rotation_x(t_point *points, t_mlx_data *data);
 
 #endif

@@ -10,7 +10,7 @@ NAME = fdf
 LIBFT = libft/libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 RM = rm -rf
 
@@ -23,7 +23,7 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 SRCS = source/main.c source/window.c source/error_management.c \
 	   	source/parse.c source/get_next_line.c source/get_next_line_utils.c \
 	  	source/free.c source/count.c source/draw.c source/projection.c \
-		source/input_handling.c
+		source/input_handling.c source/key_functions.c
 
 OBJS = $(SRCS:.c=.o)
 

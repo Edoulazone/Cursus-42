@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:35:28 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 14:35:02 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:56:18 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,16 @@ void	exit_malloc(void)
 void	window_error(void)
 {
 	write(2, "Error while crating a new window\n", 33);
+}
+
+int	bad_file(t_mlx_data *data)
+{
+	mlx_destroy_window(data->mlx_connection, data->mlx_window);
+	free(data->point);
+	free(data->mlx_connection);
+	free(data->image);
+	free(data);
+	write(1, "Map is not readable\n", 20);
+	exit(1);
+	return (0);
 }
