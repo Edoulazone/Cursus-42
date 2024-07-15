@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_hexa.c                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 17:57:10 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 14:37:14 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/07/15 15:21:30 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/07/15 16:17:04 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	skip(char *str)
+static int	skip(char *str)
 {
 	size_t	i;
 
@@ -22,24 +22,14 @@ int	skip(char *str)
 	return (i);
 }
 
-int	get_nb(char c, char *base)
-{
-	int	i;
-
-	i = 0;
-	while (base[i] && base[i] != c)
-		i++;
-	return (i);
-}
-
-int	ft_atoi_hexa(char *str)
+int	ft_atoi(const char *str)
 {
 	long int	res;
+	long int	buff;
 	int			signe;
-	char		*base;
 
-	base = "0123456789ABCDEF";
 	res = 0;
+	buff = 0;
 	signe = 1;
 	str += skip((char *)str);
 	if (*str == '-' || *str == '+')
@@ -48,10 +38,15 @@ int	ft_atoi_hexa(char *str)
 			signe *= -1;
 		str++;
 	}
-	while ((*str >= '0' && *str <= '9') || (*str >= 'A' && *str <= 'F'))
+	while (*str >= '0' && *str <= '9')
 	{
-		res = (res * 16) + get_nb(*str, base);
+		res = res * 10 + (*str - '0');
+		if (buff > res && signe > 0)
+			return (-1);
+		else if (buff > res && signe < 0)
+			return (0);
 		str++;
+		buff = res;
 	}
 	return (res * signe);
 }

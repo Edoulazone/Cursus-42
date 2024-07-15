@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:33:14 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/12 19:56:22 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:22:36 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include <stdlib.h>
 
 int		ft_atoi(const char *str);
-int		atoi_hexa(char *str);
+int		ft_atoi_hexa(char *str);
 int		ft_isdigit(int c);
 void	ft_putendl(const char *s);
 char	**ft_split(char const *s, char c);
-size_t	ft_strlen(const char *str);
+int		ft_strlen(const char *str);
 char	*ft_strrchr(const char *str, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strchr(const char *str, int c);
 
 #endif

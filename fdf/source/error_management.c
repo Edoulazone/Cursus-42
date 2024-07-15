@@ -6,9 +6,11 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:35:28 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/10 18:47:03 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:35:02 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fdf.h"
 
 void	exit_error(void)
 {

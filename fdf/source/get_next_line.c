@@ -6,11 +6,11 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:03:18 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/10 18:46:51 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:47:10 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
 static char	*ft_free_return(char **str, int must_free)
 {
@@ -46,7 +46,7 @@ char	*read_line(int fd, char *save, char *buffer)
 	int		read_bytes;
 	char	*temp;
 
-	while (!ft_strchr(save))
+	while (!ft_strchr(save, '\n'))
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)

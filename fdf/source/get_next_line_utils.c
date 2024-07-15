@@ -6,13 +6,13 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:04:38 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/10 18:46:48 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:49:55 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
-char	*ft_strchr(char *str)
+char	*ft_strchr(const char *str, int c)
 {
 	int	i;
 
@@ -21,11 +21,11 @@ char	*ft_strchr(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (str[i] == '\n')
+		if (str[i] == (char)c)
 			return ((char *)&str[i]);
 		i++;
 	}
-	if (str[i] == '\n')
+	if (!str[i] && (char)c == '\0')
 		return ((char *)&str[i]);
 	return (NULL);
 }

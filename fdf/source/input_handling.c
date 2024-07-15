@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   input_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 18:01:04 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 16:17:11 by eschmitz         ###   ########.fr       */
+/*   Created: 2024/07/15 16:00:57 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/07/15 16:19:12 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	escape_handle(int key, t_mlx_data *data)
 {
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < n)
+	if (key == 53)
 	{
-		if (s1[i] != s2[i] || s1[i] == '\0')
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
+		mlx_destroy_image(data->mlx_connection, data->image->image_ptr);
+		mlx_destroy_window(data->mlx_connection, data->mlx_window);
+		free(data->point);
+		free(data->mlx_connection);
+		free(data->image);
+		free(data);
+		write(1, "The window got closed\n", 22);
+		exit(1);
 	}
 	return (0);
 }

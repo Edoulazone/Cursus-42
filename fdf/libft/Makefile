@@ -6,7 +6,7 @@
 #    By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 17:59:48 by eschmitz          #+#    #+#              #
-#    Updated: 2024/07/12 17:57:32 by eschmitz         ###   ########.fr        #
+#    Updated: 2024/07/15 15:23:22 by eschmitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC =	ft_putendl.c\
 		ft_strlen.c\
 		ft_split.c\
 		ft_isdigit.c\
+		ft_atoi.c\
 		ft_atoi_hexa.c\
 		ft_strncmp.c\
 		ft_strrchr.c

@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:03:43 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/10 16:03:48 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:54:07 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 #  define BUFFER_SIZE 19
 # endif
 
-char	*get_next_line(int fd);
-char	*read_line(int fd, char *save, char *buffer);
-char	*ft_save(char **save);
+char		*get_next_line(int fd);
+char		*read_line(int fd, char *save, char *buffer);
+char		*ft_save(char **save);
 
-int		ft_strlen(const char *str);
-char	*ft_strchr(char *str);
-char	*ft_strjoin(char *str, char *buffer);
-char	*ft_substr(char *s, int start, int len);
-char	*ft_strdup(char *str);
+int			ft_strlen(const char *str);
+char		*ft_strchr(const char *str, int c);
+char		*ft_strjoin(char *str, char *buffer);
+char		*ft_substr(char *s, int start, int len);
+char		*ft_strdup(char *str);
 
 #endif

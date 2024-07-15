@@ -6,11 +6,30 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:32:10 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/12 10:23:35 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:02:02 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	number_words(char const *s, char c)
+{
+	int	index;
+	int	count;
+
+	index = 0;
+	count = 0;
+	while (s[index])
+	{
+		while (s[index] == c && s[index])
+			index++;
+		if (s[index] != '\0')
+			count++;
+		while (s[index] != c && s[index])
+			index++;
+	}
+	return (count);
+}
 
 int	count_columns(char *file_name)
 {
