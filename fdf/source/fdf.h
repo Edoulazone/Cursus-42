@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:45:13 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 18:46:50 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:40:05 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ enum
 	KEY_ESC = 53,
 	KEY_PLUS = 24,
 	KEY_MINUS = 27,
-	KEY_UP = 126,
+	KEY_UP = 125,
 	KEY_RIGHT = 124,
-	KEY_DOWN = 125,
+	KEY_DOWN = 126,
 	KEY_LEFT = 123,
 	KEY_0 = 82,
 	KEY_1 = 83,

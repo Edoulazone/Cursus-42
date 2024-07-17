@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:35:28 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 18:56:18 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:14:04 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	bad_file(t_mlx_data *data)
 	free(data->mlx_connection);
 	free(data->image);
 	free(data);
-	write(1, "Map is not readable\n", 20);
+	write(1, "Map has only one point or less\n", 31);
 	exit(1);
 	return (0);
 }

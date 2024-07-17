@@ -6,29 +6,34 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:32:10 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 18:23:41 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:16:17 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	number_words(char const *s, char c)
+size_t	number_words(char const *s, char c)
 {
-	int	index;
-	int	count;
+	size_t	words;
+	size_t	indice;
 
-	index = 0;
-	count = 0;
-	while (s[index])
+	words = 0;
+	while (*s)
 	{
-		while (s[index] == c && s[index])
-			index++;
-		if (s[index] != '\0')
-			count++;
-		while (s[index] != c && s[index])
-			index++;
+		indice = 0;
+		while (*s && *s == c)
+			s++;
+		while (*s && *s != c)
+		{
+			if (indice == 0)
+			{
+				words++;
+				indice = 1;
+			}
+			s++;
+		}
 	}
-	return (count);
+	return (words);
 }
 
 int	count_columns(char *file_name)
@@ -45,8 +50,6 @@ int	count_columns(char *file_name)
 	if (!line)
 		return (-1);
 	count = number_words(line, ' ');
-	if (*(ft_strrchr(line, ' ') + 1) == '\n')
-		count--;
 	free(line);
 	close(fd);
 	return (count);

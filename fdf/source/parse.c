@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:57:33 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 14:43:19 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:10:22 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 t_point	*get_points(char *file_name)
 {
-	int		i;
 	int		size;
 	t_point	*points;
 
-	i = 0;
 	size = count_columns(file_name) * count_lines(file_name);
 	if (size == -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:32:24 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 18:57:00 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:11:15 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		data->argv = argv;
 		data->width = count_columns(argv[1]);
 		data->height = count_lines(argv[1]);
-		if (data->width <= 0 && data->height <= 0)
+		if (data->width <= 1 && data->height <= 1)
 			bad_file(data);
 		projection(points, data);
 		draw(data, points);

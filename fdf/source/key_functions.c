@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 18:08:07 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 18:45:02 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:44:18 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	rotation_x(t_point *points, t_mlx_data *data)
 	float	center_x;
 	float	center_y;
 
-	center_x = (WIDTH / 2.0) + 350;
+	center_x = (WIDTH / 2.0);
 	center_y = HEIGHT / 2.0;
 	i = 0;
 	while (points[i].x != -1)
