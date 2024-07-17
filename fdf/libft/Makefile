@@ -6,7 +6,7 @@
 #    By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 17:59:48 by eschmitz          #+#    #+#              #
-#    Updated: 2024/07/17 16:15:02 by eschmitz         ###   ########.fr        #
+#    Updated: 2024/07/17 17:14:17 by eschmitz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC =	ft_putendl.c\
 		ft_isdigit.c\
 		ft_atoi.c\
 		ft_atoi_hexa.c\
-		ft_strncmp.c
+		ft_strncmp.c\
+		ft_strrchr.c
 
 OBJ = $(SRC:.c=.o)
 

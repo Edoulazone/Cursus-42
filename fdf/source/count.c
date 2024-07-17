@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:32:10 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/17 16:16:17 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:14:56 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	count_columns(char *file_name)
 	if (!line)
 		return (-1);
 	count = number_words(line, ' ');
+	if (*(ft_strrchr(line, ' ') + 1) == '\n')
+		count--;
 	free(line);
 	close(fd);
 	return (count);

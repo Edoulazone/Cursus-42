@@ -6,45 +6,68 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:19:35 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 21:50:18 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:28:00 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include "minitalk.h"
 
-void	send_bit(int pid, char *str, size_t len)
+int	ft_atoi(char *str)
 {
-	int		shift;
-	size_t	i;
+	long	nb;
+	int		len;
+	int		i;
 
+	len = 0;
+	while (str && str[len])
+		len++;
 	i = 0;
-	while (i <= len)
+	nb = 0;
+	while (i < len)
+		nb = (nb * 10) + (str[i++] - 48);
+	return (nb);
+}
+
+void	ft_send_signal(int pid, char c)
+{
+	int	arr[8];
+	int	n;
+	int	i;
+
+	n = c;
+	i = 7;
+	while (i >= 0)
 	{
-		shift = 0;
-		while (shift < 7)
-		{
-			if ((str[i] >> shift) & 1)
-				kill(pid, SIGUSR2);
-			else
-				kill(pid, SIGUSR1);
-			shift++;
-			usleep(300);
-		}
-		i++;
+		if (n == 0 || (n & 1) == 0)
+			arr[i] = 0;
+		else if ((n & 1) == 1)
+			arr[i] = 1;
+		if (n > 0)
+			n >>= 1;
+		i--;
+	}
+	while (++i < 8)
+	{
+		if (arr[i] == 0)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		usleep(50);
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	int		pid;
-	char	*str;
+	int	pid;
 
-	if (argc == 3)
+	if (argc != 3)
+		write(1, "Args error", 10);
+	else
 	{
 		pid = ft_atoi(argv[1]);
-		str = argv[2];
-		send_bit(pid, str, ft_strlen(str));
+		while (argv[2] && *argv[2])
+			ft_send_signal(pid, *argv[2]++);
+		ft_send_signal(pid, '\n');
 	}
-	else
-		ft_printf("\nThe text was blank or too long\n");
+	return (0);
 }

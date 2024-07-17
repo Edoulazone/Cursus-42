@@ -1,24 +1,52 @@
+NAME = minitalk
+
 SERVER = server
 CLIENT = client
 
 CFLAGS = -Wall -Werror -Wextra
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -I$(PRINTF)/headers -L$(PRINTF) -lftprintf
+RM = rm -rf
 
-PRINTF = ft_printf
+all:	$(NAME) 
+	@echo "                                                                       "
+	@echo "\033[95;1m 	▄▄   ▄▄ ▄▄▄ ▄▄    ▄ ▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄ ▄▄▄     ▄▄▄   ▄▄   "
+	@echo "\033[95;1m 	█  █▄█  █   █  █  █ █   █       █      █   █   █   █ █ █  "
+	@echo "\033[95;1m 	█       █   █   █▄█ █   █▄     ▄█  ▄   █   █   █   █▄█ █  "
+	@echo "\033[95;1m 	█       █   █       █   █ █   █ █ █▄█  █   █   █      ▄█  "
+	@echo "\033[95;1m 	█       █   █  ▄    █   █ █   █ █      █   █▄▄▄█     █▄   "
+	@echo "\033[95;1m 	█ ██▄██ █   █ █ █   █   █ █   █ █  ▄   █       █    ▄  █  "
+	@echo "\033[95;1m 	█▄█   █▄█▄▄▄█▄█  █▄▄█▄▄▄█ █▄▄▄█ █▄█ █▄▄█▄▄▄▄▄▄▄█▄▄▄█ █▄█  "
+	@echo "                                                                       "
 
-all:
-	@make -s -C $(PRINTF)
-	@gcc $(FLAGS) server.c -o $(SERVER)
-	@gcc $(FLAGS) client.c -o $(CLIENT)
-	@echo "Server And Client Are Ready!"
+$(NAME):	$(SERVER) $(CLIENT)
+
+$(SERVER):	$(SERVER).c minitalk.h
+			@$(CC) $(CFLAGS) -o $(SERVER) $(SERVER).c
+
+$(CLIENT):	$(CLIENT).c minitalk.h
+			@$(CC) $(CFLAGS) -o $(CLIENT) $(CLIENT).c
 
 clean:
-	@make clean -s -C $(PRINTF)
+	@$(RM) $(SERVER) $(CLIENT)
+	@echo "It's a clean!                        "
+	@echo "\033[95;1m	            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓             "
+	@echo "\033[95;1m	          ▓▓▓▓▓▓▓▓▓▒▒▒▒███▓▓▓▓▓▓▓▓        "
+	@echo "\033[95;1m		██▒▒████▒▒▒▒▒▒▒███▒▒▒           "
+	@echo "\033[95;1m		██▒▒▒█████▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒    "
+	@echo "\033[95;1m		█████▒▒▒▒▒▒▒▒▒▒███████████      "
+	@echo "\033[95;1m		     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒          "
+	@echo "\033[95;1m     	          █████▓▓██████▓▓██           "
+	@echo "\033[95;1m	       ████████▓▓██████▓▓███████       "
+	@echo "\033[95;1m	    ███████████▓▓██████▓▓██████████     "
+	@echo "\033[95;1m	    ▒▒▒▒▒▓█████▓▓▓▓▓▓▓▓▓▓█████▒▒▒▒▒     "
+	@echo "\033[95;1m	    ▒▒▒▒▒▒▒▓▓▓░░▓▓▓▓▓▓▓░░▓▓▓▒▒▒▒▒▒▒     "
+	@echo "\033[95;1m	         ▓▓▓▓▓▓▓▓     ▓▓▓▓▓▓▓▓           "
+	@echo "\033[95;1m	       ███████           ███████       "
+	@echo "\033[95;1m	    ██████████           ██████████     "
+	@echo "                                     "
 
 fclean: clean
-	@make fclean -s -C $(PRINTF)
-	@rm -f $(SERVER) $(CLIENT)
-	@echo "Server and Client Have Been Cleaned Successfully"
 
 re: fclean all
+
+.PHONY:	all clean fclean re

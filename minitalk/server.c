@@ -6,38 +6,55 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:16:15 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 21:55:01 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:54:25 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
+#include "minitalk.h"
 
-void	bit_handler(int bit)
+void	ft_putnbr(long nbr)
 {
-	int	i;
+	char	temp;
 
-	i = 0;
-	g_msg.c += ((bit & 1) << g_msg.i);
-	g_msg.i++;
-	if (g_msg.i == 7)
+	if (nbr / 10 > 0)
+		ft_putnbr(nbr / 10);
+	temp = nbr % 10 + '0';
+	write(1, &temp, 1);
+}
+
+void	sig_handle(int signal)
+{
+	static int	i;
+	static int	n;
+	int			nb;
+
+	if (signal == SIGUSR1)
+		nb = 0;
+	else
+		nb = 1;
+	n = (n << 1) + nb;
+	i++;
+	if (i == 8)
 	{
-		ft_printf("%c", g_msg.c);
-		if (!g_msg.c)
-			ft_printf("\n");
-		g_msg.c = 0;
-		g_msg.i = 0;
+		write(1, &n, 1);
+		i = 0;
+		n = 0;
 	}
 }
 
 int	main(void)
 {
-	ft_printf("You are now on Edou's server\n");
-	ft_printf("My Server PID is: %d\n", getpid());
+	struct sigaction	sigact;
+
+	sigact.sa_handler = &sig_handle;
+	sigact.sa_flags = SA_RESTART;
+	sigaction(SIGUSR1, &sigact, 0);
+	sigaction(SIGUSR2, &sigact, 0);
+	write(1, "You are now on Edou's minitalk\n", 31);
+	write(1, "The server PID is: ", 19);
+	ft_putnbr(getpid());
+	write(1, "\n", 1);
 	while (1)
-	{
-		signal(SIGUSR2, bit_handler);
-		signal(SIGUSR1, bit_handler);
-		pause();
-	}
+		usleep(100);
 	return (0);
 }
