@@ -53,6 +53,7 @@ fclean : clean
 clean :
 	@make clean -C libft
 	@$(RM) source/*.o
+	@make clean -C mlx
 
 re : fclean all 
 
