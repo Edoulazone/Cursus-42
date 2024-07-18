@@ -46,6 +46,14 @@ clean:
 	@echo "                                     "
 
 fclean: clean
+	@echo "                         "
+	@echo "  (        ) )  (   (      "
+	@echo " ()) (   ((\(   )\  (\    "
+	@echo "(_)())\  )\)(| ((_) (\   "
+	@echo "| _ )( )(_)()\((_))(( )  "
+	@echo "| _ \ '_| | -_) || | _|  "
+	@echo "|___/_| |_|___|\_._|__|  "
+	@echo "                         "
 
 re: fclean all
 
