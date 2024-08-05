@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:03:43 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/15 14:54:07 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:22:28 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 19
+#  define BUFFER_SIZE 1
 # endif
 
 char		*get_next_line(int fd);

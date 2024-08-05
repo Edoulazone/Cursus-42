@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:11:41 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/07/17 17:20:26 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:15:07 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	draw_line(t_mlx_data *data, t_point start, t_point end, int colour)
 	start.projected_y = (int)start.projected_y;
 	end.projected_x = (int)end.projected_x;
 	end.projected_y = (int)end.projected_y;
-	data->dx = abs(end.projected_x - start.projected_x);
-	data->dy = abs(end.projected_y - start.projected_y);
+	data->dx = fabsf(end.projected_x - start.projected_x);
+	data->dy = fabsf(end.projected_y - start.projected_y);
 	data->sx = -1;
 	data->sy = -1;
 	if (start.projected_x < end.projected_x)
