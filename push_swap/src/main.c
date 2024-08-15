@@ -3,19 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 14:04:00 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/30 15:11:18 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/06/02 13:27:24 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/08/15 16:38:28 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* is_sorted:
-*	Checks if a stack is sorted.
-*	Returns 0 if the stack is not sorted, 1 if it is sorted.
-*/
 int	is_sorted(t_stack *stack)
 {
 	while (stack->next != NULL)
@@ -27,10 +23,6 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-/* push_swap:
-*	Chooses a sorting method depending on the number
-*	of values to be sorted.
-*/
 static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
 	if (stack_size == 2 && !is_sorted(*stack_a))
@@ -41,23 +33,18 @@ static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 		sort(stack_a, stack_b);
 }
 
-/* main:
-*	Checks if the input is correct, in which case it initializes stacks a and b,
-*	assigns each value indexes and sorts the stacks. When sorting is done, frees
-*	the stacks and exits.
-*/
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		stack_size;
 
-	if (ac < 2)
+	if (argc < 2)
 		return (0);
-	if (!is_correct_input(av))
+	if (!is_correct_input(argv))
 		exit_error(NULL, NULL);
 	stack_b = NULL;
-	stack_a = fill_stack_values(ac, av);
+	stack_a = fill_stack_values(argc, argv);
 	stack_size = get_stack_size(stack_a);
 	assign_index(stack_a, stack_size + 1);
 	push_swap(&stack_a, &stack_b, stack_size);

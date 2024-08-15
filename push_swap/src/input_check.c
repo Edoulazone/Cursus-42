@@ -3,49 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   input_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 13:27:24 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/05/13 15:57:10 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/06/02 13:42:53 by eschmitz          #+#    #+#             */
+/*   Updated: 2024/08/15 16:38:32 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* arg_is_number:
-*   Checks if the argument is a number. +1 1 and -1 are all valid numbers.
-*   Return: 1 if the argument is a number, 0 if not.
-*/
-static int	arg_is_number(char *av)
+int	is_digit(char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int	is_sign(char c)
+{
+	return (c == '+' || c == '-');
+}
+
+static int	arg_is_number(char *argv)
 {
 	int	i;
 
 	i = 0;
-	if (is_sign(av[i]) && av[i + 1] != '\0')
+	if (is_sign(argv[i]) && argv[i + 1] != '\0')
 		i++;
-	while (av[i] && is_digit(av[i]))
+	while (argv[i] && is_digit(argv[i]))
 		i++;
-	if (av[i] != '\0' && !is_digit(av[i]))
+	if (argv[i] != '\0' && !is_digit(argv[i]))
 		return (0);
 	return (1);
 }
 
-/* have_duplicates:
-*   Checks if the argument list has duplicate numbers.
-*   Return: 1 if a duplicate is found, 0 if there are none.
-*/
-static int	have_duplicates(char **av)
+static int	have_duplicates(char **argv)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (av[i])
+	while (argv[i])
 	{
 		j = 1;
-		while (av[j])
+		while (argv[j])
 		{
-			if (j != i && nbstr_cmp(av[i], av[j]) == 0)
+			if (j != i && ft_atoi(argv[i]) == ft_atoi(argv[j]))
 				return (1);
 			j++;
 		}
@@ -54,47 +56,19 @@ static int	have_duplicates(char **av)
 	return (0);
 }
 
-/* arg_is_zero:
-*   Checks the argument is a 0 to avoid 0 +0 -0 duplicates
-*	and 0 0000 +000 -00000000 too.
-*   Return: 1 if the argument is a zero, 0 if it contains
-*	anything else than a zero.
-*/
-static int	arg_is_zero(char *av)
+int	is_correct_input(char **argv)
 {
 	int	i;
-
+	
 	i = 0;
-	if (is_sign(av[i]))
-		i++;
-	while (av[i] && av[i] == '0')
-		i++;
-	if (av[i] != '\0')
+	if (argv[1][0] == '\0')
 		return (0);
-	return (1);
-}
-
-/* is_correct_input:
-*   Checks if the given arguments are all numbers, without duplicates.
-*   Return: 1 if the arguments are valid, 0 if not.
-*/
-int	is_correct_input(char **av)
-{
-	int	i;
-	int	nb_zeros;
-
-	nb_zeros = 0;
-	i = 1;
-	while (av[i])
+	while (argv[++i])
 	{
-		if (!arg_is_number(av[i]))
+		if (!arg_is_number(argv[i]))
 			return (0);
-		nb_zeros += arg_is_zero(av[i]);
-		i++;
 	}
-	if (nb_zeros > 1)
-		return (0);
-	if (have_duplicates(av))
+	if (have_duplicates(argv))
 		return (0);
 	return (1);
 }
