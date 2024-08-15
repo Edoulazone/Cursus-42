@@ -59,7 +59,7 @@ static int	have_duplicates(char **argv)
 int	is_correct_input(char **argv)
 {
 	int	i;
-	
+
 	i = 0;
 	if (argv[1][0] == '\0')
 		return (0);
