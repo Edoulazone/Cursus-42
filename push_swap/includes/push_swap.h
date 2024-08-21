@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:18:32 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/15 16:38:46 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/21 09:42:42 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-t_stack		*fill_stack_values(int ac, char **av);
-void		assign_index(t_stack *stack_a, int ac);
+t_stack		*fill_stack_values(int argc, char **argv);
+void		assign_index(t_stack *stack_a, int stack_size);
 
 int			is_sorted(t_stack *stack);
 void		tiny_sort(t_stack **stack);
@@ -70,8 +70,10 @@ int			nb_abs(int nb);
 
 void		exit_error(t_stack **stack_a, t_stack **stack_b);
 
-int			is_correct_input(char **av);
+int			is_correct_input(char **argv);
 int			is_digit(char c);
 int			is_sign(char c);
+
+char		**ft_split(char const *s, char c);
 
 #endif

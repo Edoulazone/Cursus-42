@@ -6,13 +6,13 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:04:17 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/15 16:38:37 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/20 14:41:16 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*fill_stack_values(int ac, char **av)
+t_stack	*fill_stack_values(int argc, char **argv)
 {
 	t_stack		*stack_a;
 	long int	nb;
@@ -21,9 +21,9 @@ t_stack	*fill_stack_values(int ac, char **av)
 	stack_a = NULL;
 	nb = 0;
 	i = 1;
-	while (i < ac)
+	while (i < argc)
 	{
-		nb = ft_atoi(av[i]);
+		nb = ft_atoi(argv[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
 			exit_error(&stack_a, NULL);
 		if (i == 1)

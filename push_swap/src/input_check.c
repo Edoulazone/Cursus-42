@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:42:53 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/15 16:38:32 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/15 16:56:45 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	have_duplicates(char **argv)
 int	is_correct_input(char **argv)
 {
 	int	i;
-	
+
 	i = 0;
 	if (argv[1][0] == '\0')
 		return (0);

@@ -6,11 +6,49 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:27:24 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/15 16:38:28 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:13:08 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_strlen(const char *s)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		indent;
+	int		length_s1;
+	int		length_s2;
+	char	*string;
+
+	if (s1 && s2)
+	{
+		length_s1 = ft_strlen(s1);
+		length_s2 = ft_strlen(s2);
+		string = (char *)malloc(sizeof(char) * (length_s1 + length_s2 + 1));
+		if (string == NULL)
+			return (NULL);
+		indent = -1;
+		while (s1[++indent])
+			string[indent] = s1[indent];
+		indent = -1;
+		while (s2[++indent])
+			string[length_s1 + indent] = s2[indent];
+		string[length_s1 + indent] = '\0';
+		return (string);
+	}
+	return (NULL);
+}
 
 int	is_sorted(t_stack *stack)
 {
@@ -38,9 +76,18 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		stack_size;
+	int		i;
 
+	i = 0;
 	if (argc < 2)
 		return (0);
+	if (argc == 2 && argv[1][0] != '\0')
+		argv = ft_split(ft_strjoin("push_swap ", argv[1]), ' ');
+	if (!argv)
+		exit(1);
+	while (argv[i])
+		i++;
+	argc = i;
 	if (!is_correct_input(argv))
 		exit_error(NULL, NULL);
 	stack_b = NULL;
