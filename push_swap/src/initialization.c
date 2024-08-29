@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:04:17 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/20 14:41:16 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:29:52 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_stack	*fill_stack_values(int argc, char **argv)
 	{
 		nb = ft_atoi(argv[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
-			exit_error(&stack_a, NULL);
+			exit_error(&stack_a, NULL, argv);
 		if (i == 1)
 			stack_a = stack_new((int)nb);
 		else

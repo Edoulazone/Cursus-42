@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 16:57:26 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/21 13:12:59 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:10:07 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static char	**make_tab(const char *s, char c, int nbr_words, char **news_s)
 	return (news_s);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	int		nbr_words;
 	char	**news_s;
@@ -108,5 +108,6 @@ char	**ft_split(char const *s, char c)
 	if (make_tab(s, c, nbr_words, news_s) == NULL)
 		return (NULL);
 	news_s[nbr_words - 1] = NULL;
+	free(s);
 	return (news_s);
 }

@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:17:23 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/15 16:40:26 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:11:47 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void	exit_error(t_stack **stack_a, t_stack **stack_b)
+void	exit_error(t_stack **stack_a, t_stack **stack_b, char **av)
 {
 	if (stack_a == NULL || *stack_a != NULL)
 		free_stack(stack_a);
 	if (stack_b == NULL || *stack_b != NULL)
 		free_stack(stack_b);
+	if (av)
+		free_tab(av);
 	write(2, "Error\n", 6);
 	exit (1);
 }
@@ -43,6 +45,8 @@ long int	ft_atoi(const char *str)
 	int			isneg;
 	int			i;
 
+	if (ft_strlen(str) >= 12)
+		exit_error(NULL, NULL, NULL);
 	nb = 0;
 	isneg = 1;
 	i = 0;

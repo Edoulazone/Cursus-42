@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:18:32 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/21 09:42:42 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:12:15 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,20 @@ long int	ft_atoi(const char *str);
 void		ft_putstr(char *str);
 int			nb_abs(int nb);
 
-void		exit_error(t_stack **stack_a, t_stack **stack_b);
+void		exit_error(t_stack **stack_a, t_stack **stack_b, char **av);
 
 int			is_correct_input(char **argv);
 int			is_digit(char c);
 int			is_sign(char c);
+int			ft_strlen(const char *s);
+char		*ft_strjoin(char const *s1, char const *s2);
 
-char		**ft_split(char const *s, char c);
+int			is_sorted(t_stack *stack);
+
+int			do_this_shit(int argc, char **av);
+int			do_this_other_shit(int argc, char **argv);
+void		free_tab(char **av);
+
+char		**ft_split(char *s, char c);
 
 #endif

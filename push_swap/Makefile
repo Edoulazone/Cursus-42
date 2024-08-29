@@ -1,5 +1,5 @@
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra #-fsanitize=address
 NAME	= push_swap
 
 SRC_PATH = src/
@@ -12,7 +12,7 @@ SRC		= main.c \
 		swap.c push.c rotate.c reverse_rotate.c \
 		sort_tiny.c sort.c \
 		position.c cost.c move.c \
-		utils.c split.c
+		utils.c split.c utils_2.c
 
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 

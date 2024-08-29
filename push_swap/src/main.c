@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:27:24 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/21 13:13:08 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:11:37 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,41 +61,31 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
+void	free_tab(char **av)
 {
-	if (stack_size == 2 && !is_sorted(*stack_a))
-		do_sa(stack_a);
-	else if (stack_size == 3)
-		tiny_sort(stack_a);
-	else if (stack_size > 3 && !is_sorted(*stack_a))
-		sort(stack_a, stack_b);
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		free(av[i]);
+		i++;
+	}
+	free(av);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		stack_size;
-	int		i;
+	char	**av;
 
-	i = 0;
+	av = NULL;
 	if (argc < 2)
 		return (0);
 	if (argc == 2 && argv[1][0] != '\0')
-		argv = ft_split(ft_strjoin("push_swap ", argv[1]), ' ');
-	if (!argv)
-		exit(1);
-	while (argv[i])
-		i++;
-	argc = i;
-	if (!is_correct_input(argv))
-		exit_error(NULL, NULL);
-	stack_b = NULL;
-	stack_a = fill_stack_values(argc, argv);
-	stack_size = get_stack_size(stack_a);
-	assign_index(stack_a, stack_size + 1);
-	push_swap(&stack_a, &stack_b, stack_size);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+		av = ft_split(ft_strjoin("push_swap ", argv[1]), ' ');
+	if (argc == 2)
+		do_this_shit(argc, av);
+	else
+		do_this_other_shit(argc, argv);
 	return (0);
 }
