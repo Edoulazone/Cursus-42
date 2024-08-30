@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:17:58 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/30 13:49:46 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/30 15:20:53 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	do_this_shit(int argc, char **av)
 
 	i = 0;
 	if (!av || !av[1])
-		exit(1);
+		exit_error_argv(NULL, NULL);
 	while (av[i])
 		i++;
 	argc = i;
