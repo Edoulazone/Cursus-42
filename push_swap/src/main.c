@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:27:24 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/29 18:11:37 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/30 13:44:07 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,10 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (argc == 2 && argv[1][0] != '\0')
+	{
 		av = ft_split(ft_strjoin("push_swap ", argv[1]), ' ');
-	if (argc == 2)
 		do_this_shit(argc, av);
+	}
 	else
 		do_this_other_shit(argc, argv);
 	return (0);
