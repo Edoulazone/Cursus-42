@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:17:23 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/30 16:07:45 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:13:47 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ long int	ft_atoi(const char *str)
 	nb = 0;
 	isneg = 1;
 	i = 0;
-	if (str[i] == '+')
+	while (str[i] == ' ')
 		i++;
-	else if (str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
-		isneg *= -1;
+		if (str[i] == '-')
+			isneg *= -1;
 		i++;
 	}
 	while (is_digit(str[i]))

@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:42:53 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/30 15:53:32 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:04:57 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	arg_is_number(char *argv)
 	i = 0;
 	if (!argv || argv[0] == '\0')
 		return (1);
+	while (argv[i] == ' ')
+		i++;
 	if (is_sign(argv[i]) && argv[i + 1] != '\0')
 		i++;
 	while (argv[i] && is_digit(argv[i]))
@@ -69,8 +71,7 @@ int	is_correct_input(char **argv)
 	{
 		if (!arg_is_number(argv[i]))
 			return (0);
-		if (ft_atoi(argv[i]))
-			i = i -1 +1;
+		ft_atoi(argv[i]);
 		i++;
 	}
 	if (have_duplicates(argv))
