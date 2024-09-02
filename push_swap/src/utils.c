@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:17:23 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/30 13:49:49 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:07:45 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ long int	ft_atoi(const char *str)
 	int			i;
 
 	if (ft_strlen(str) >= 12)
-		exit_error(NULL, NULL, NULL);
+		exit_error_argv(NULL, NULL);
 	nb = 0;
 	isneg = 1;
 	i = 0;
@@ -62,6 +62,8 @@ long int	ft_atoi(const char *str)
 		nb = (nb * 10) + (str[i] - '0');
 		i++;
 	}
+	if (nb * isneg > 2147483647 || nb * isneg < -2147483648)
+		exit_error_argv(NULL, NULL);
 	return (nb * isneg);
 }
 

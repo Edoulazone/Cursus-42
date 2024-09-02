@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:18:32 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/29 18:12:15 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/30 15:58:00 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void		ft_putstr(char *str);
 int			nb_abs(int nb);
 
 void		exit_error(t_stack **stack_a, t_stack **stack_b, char **av);
+void		exit_error_argv(t_stack **stack_a, t_stack **stack_b);
 
 int			is_correct_input(char **argv);
 int			is_digit(char c);

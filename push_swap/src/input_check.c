@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 13:42:53 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/08/29 18:09:17 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/08/30 15:53:32 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	is_correct_input(char **argv)
 	{
 		if (!arg_is_number(argv[i]))
 			return (0);
+		if (ft_atoi(argv[i]))
+			i = i -1 +1;
 		i++;
 	}
 	if (have_duplicates(argv))
