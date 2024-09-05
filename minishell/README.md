@@ -1,0 +1,1 @@
+This is the minishell project of Gabriel Nyssens and Eduardo Schmitz
