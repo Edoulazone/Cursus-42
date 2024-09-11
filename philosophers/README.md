@@ -1,10 +1,10 @@
 # Philosophers
 
-## 0 The project
+## The project
 
 This project is about creating multiple threads at the same time and making them able to interact together (probably, I'm not sure I understand it all very well).
 
-### 0.1 Global rules
+### Global rules
 
 • Global variables are forbidden!
 
