@@ -62,27 +62,3 @@ No libft authorized
 Program name: philo
 
 Arguments: number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
-
-## 2 Bonus part
-
-The program of the bonus part takes the same arguments as the mandatory program. It has to comply with the requirements of the Global rules chapter.
-
-### 2.1 Specific rules
-
-• All the forks are put in the middle of the table.
-
-• They have no states in memory but the number of available forks is represented by a semaphore.
-
-• Each philosopher should be a process. But the main process should not be a philosopher
-
-### 2.2 External functions
-
-memset, printf, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_detach, pthread_join, pthread_mutex_init, pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock
-
-No libft authorized
-
-### 2.3 Other
-
-Program name: philo_bonus
-
-Arguments: number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
