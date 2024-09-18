@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 19:12:25 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/09/18 16:47:31 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:49:10 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	check_thread(t_params *param, t_philo *philo)
 				param->over = 1;
 	}
 	if (param->check_meal && philo[param->num_of_philos - 1].iteration_number
-		== param->maximum_iterations)
+		>= param->maximum_iterations)
 	{
 		ft_usleep(5 * param->num_of_philos);
 		printf("\n  All philos have eaten %d times\n",

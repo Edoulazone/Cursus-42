@@ -1,5 +1,3 @@
-![brain_explosion](https://github.com/Edoulazone/Cursus-42/blob/master/gifs/brain_explosion.gif)
-
 # Philosophers
 
 ## The project

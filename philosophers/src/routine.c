@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 20:03:31 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/09/18 13:13:55 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:46:08 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static void	eat_routine(t_philo *philo)
 
 void	ft_chill(t_philo *philo)
 {
-	ft_usleep(philo->parameters->time_to_sleep);
 	print_action("is sleeping", philo);
+	ft_usleep(philo->parameters->time_to_sleep);
 	print_action("is thinking", philo);
 }
 
@@ -42,7 +42,8 @@ void	*thread_routine(void *arg)
 		continue ;
 	if (philo->id & 1)
 		ft_usleep(philo->parameters->time_to_eat * 0.9 + 1);
-	while (!philo->parameters->over)
+	while (!philo->parameters->over
+		&& philo->iteration_number < philo->parameters->maximum_iterations)
 	{
 		eat_routine(philo);
 		ft_chill(philo);
