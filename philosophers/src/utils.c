@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:42:55 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/09/06 17:42:41 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:21:03 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	ft_isdigit(char *str)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 static int	sign_space(char *str, int *ptr_len)

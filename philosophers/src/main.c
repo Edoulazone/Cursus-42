@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:12:56 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/09/18 12:11:06 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:38:04 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,19 @@ static int	initialise_params_mutex(t_params *param)
 	i = -1;
 	param->death = 0;
 	param->fork = 0;
+	param->print_m = 0;
 	param->death = malloc(sizeof(pthread_mutex_t));
 	if (!param->death)
-		return (error_msg("Error: Mutex death; malloc failed\n", param, 0, 1));
+		return (error_msg("Error: Mutex death malloc failed\n", param, 0, 1));
 	param->fork = malloc(sizeof(pthread_mutex_t) * param->num_of_philos);
 	if (!param->fork)
-		return (error_msg("Error: Mutex fork; malloc failed\n", param, 0, 1));
+		return (error_msg("Error: Mutex fork malloc failed\n", param, 0, 1));
+	param->print_m = malloc(sizeof(pthread_mutex_t));
+	if (!param->print_m)
+		return (error_msg("Error: Mutex print_m malloc failed\n", param, 0, 1));
 	if (pthread_mutex_init(param->death, NULL) == -1)
+		return (error_msg("Error: Mutex init failed\n", param, 0, 1));
+	if (pthread_mutex_init(param->print_m, NULL) == -1)
 		return (error_msg("Error: Mutex init failed\n", param, 0, 1));
 	while (++i < param->num_of_philos)
 		if (pthread_mutex_init(&param->fork[i], NULL) == -1)
@@ -39,8 +45,6 @@ static int	initialise_params(t_params *param, char **argv)
 
 	mutex = -1;
 	param->num_of_philos = ft_atoi(argv[1]);
-	if (param->num_of_philos <= 1)
-		return (1);
 	param->time_to_die = ft_atoi(argv[2]);
 	param->time_to_eat = ft_atoi(argv[3]);
 	param->time_to_sleep = ft_atoi(argv[4]);
@@ -70,7 +74,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		if (!ft_isdigit(argv[i]))
+		if (ft_isdigit(argv[i]))
 			return (printf("Error: Invalid arguments\n"), 1);
 		i++;
 	}
