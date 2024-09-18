@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:14:16 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/09/11 11:56:00 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/09/18 10:49:01 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ typedef struct s_params
 	long int		end;
 	pthread_mutex_t	*death;
 	pthread_mutex_t	*fork;
+	pthread_mutex_t	*print_m;
 }	t_params;
 
 typedef struct s_philo
 {
-	pthread_t		id;
+	int				id;
 	int				dead;
 	int				iteration_number;
 	long int		thread_start;
@@ -62,29 +63,22 @@ typedef struct s_philo
 
 //philosophers.c
 int			philosophers(t_params *parameters);
-static int	initialise_thread(t_params *p, t_philo *philo);
-
-//main.c
-static int	initialise_params(t_params *p, char **argv);
-static int	initialise_params_mutex(t_params *p);
-int			initialise_philo(t_params *p, t_philo *philo);
-void		print_action(char *str, t_philo *philo);
 
 //routine.c
-void		*thread_routine(void *job);
+void		*thread_routine(void *arg);
 void		ft_chill(t_philo *philo);
-void		eat_time(void *arg);
-static void	eat_routine(t_philo *philo);
 
 //utils.c
 long		ft_atoi(char *str);
-static int	sign_space(char *str, int *ptr_len);
 int			ft_isdigit(char *str);
 int			error_msg(char *str, t_params *parameters, t_philo *philo,
 				int malloc);
 
-//time.c
+//utils2.c
+int			check_death(t_philo *philo);
+int			check_meals(int last, t_philo philo);
 int			get_time(void);
 int			ft_usleep(int time);
+void		print_action(char *str, t_philo *philo);
 
 #endif
