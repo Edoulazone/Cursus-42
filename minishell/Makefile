@@ -5,7 +5,7 @@ NAME	= minishell
 SRC_PATH = source/
 OBJ_PATH = objects/
 
-SRC		= main.c commands.c parsing.c utils.c
+SRC		= main.c commands.c parsing.c auto_complete.c
 
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 

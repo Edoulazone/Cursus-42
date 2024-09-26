@@ -6,7 +6,7 @@
 /*   By: eschmitz <eschmitz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:05:41 by eschmitz          #+#    #+#             */
-/*   Updated: 2024/09/26 14:53:49 by eschmitz         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:06:50 by eschmitz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,30 @@ void	parse_input(char *input, char **argv)
 		argv[i] = strtok(NULL, " \n");
 }
 
-char	*read_input(void)
+void	read_input(char *buffer)
 {
-	char	*input;
-	size_t	buffer_size;
+	int		len;
+	char	c;
 
-	buffer_size = 1024;
-	input = (char *)malloc(sizeof(char) * buffer_size);
-	if (!input)
+	len = 0;
+	while (1)
 	{
-		write(2, "Allocation error\n", 17);
-		exit(EXIT_FAILURE);
+		read(STDIN_FILENO, &c, 1);
+		if (c == 9)
+		{
+			buffer[len] = '\0';
+			auto_complete(buffer);
+		}
+		else if (c == 10)
+		{
+			buffer[len] = '\0';
+			return ;
+		}
+		else
+		{
+			buffer[len] = c;
+			len++;
+			write(STDOUT_FILENO, &c, 1);
+		}
 	}
-	if (getline(&input, &buffer_size, stdin) == -1)
-	{
-		free(input);
-		exit(EXIT_FAILURE);
-	}
-	return (input);
 }
