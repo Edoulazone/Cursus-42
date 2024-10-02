@@ -2,7 +2,7 @@ CC		= cc
 CFLAGS	= -Wall -Werror -Wextra
 NAME	= minishell
 
-SRC_PATH = source/
+SRC_PATH = source/lexer source/parser source/main
 OBJ_PATH = objects/
 
 SRC		= main.c commands.c parsing.c auto_complete.c
@@ -13,7 +13,7 @@ OBJ		= $(SRC:.c=.o)
 
 OBJS	= $(addprefix $(OBJ_PATH), $(OBJ))
 
-INCS	= -I ./includes/
+INCS	= -I ./../includes/
 
 all: $(NAME)
 
@@ -35,9 +35,6 @@ $(NAME): $(OBJ_PATH) $(OBJS)
 	@echo "\033[34m| ▓▓ | ▓▓ | ▓▓ ▓▓ ▓▓  | ▓▓ ▓▓       ▓▓ ▓▓  | ▓▓\▓▓     \ ▓▓ ▓▓  "
 	@echo "\033[31m \▓▓  \▓▓  \▓▓\▓▓\▓▓   \▓▓\▓▓\▓▓▓▓▓▓▓ \▓▓   \▓▓ \▓▓▓▓▓▓▓\▓▓\▓▓  "
 	@echo "\n                                                                      "
-                                                              
-                                                              
-                                                              
 
 clean:
 	@rm -rf $(OBJ_PATH)
